@@ -12,4 +12,11 @@ export default class Calculator {
     }
     return x - y;
   }
+
+  static multiply(x, y) {
+    if (isNaN(x) || isNaN(y)) {
+      throw new Error("Inputs must be numbers!");
+    }
+    return x * y;
+  }
 }

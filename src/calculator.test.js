@@ -39,3 +39,23 @@ describe("subtract", () => {
     }).toThrow();
   });
 });
+
+describe("multiply", () => {
+  test("works with integers", () => {
+    expect(Calculator.multiply(22, 5)).toStrictEqual(110);
+  });
+
+  test("works with another set of integers", () => {
+    expect(Calculator.multiply(-17, 68)).toStrictEqual(-1156);
+  });
+
+  test("works with floats", () => {
+    expect(Calculator.multiply(3.14, 180.9)).toBeCloseTo(568.026);
+  });
+
+  test("doesn't work if inputs are not both numbers", () => {
+    expect(() => {
+      Calculator.multiply("c", { three: 3 });
+    }).toThrow();
+  });
+});
