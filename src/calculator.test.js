@@ -32,4 +32,10 @@ describe("subtract", () => {
   test("works with floats", () => {
     expect(Calculator.subtract(1.1, 77.32)).toBeCloseTo(-76.22);
   });
+
+  test("doesn't work if inputs are not both numbers", () => {
+    expect(() => {
+      Calculator.subtract("b", [2]);
+    }).toThrow();
+  });
 });
