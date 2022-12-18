@@ -12,6 +12,12 @@ describe("add", () => {
   test("works with floats", () => {
     expect(Calculator.add(999.7, -23.4)).toBeCloseTo(976.3);
   });
+
+  test("doesn't work if inputs are not both numbers", () => {
+    expect(() => {
+      Calculator.add("a", [1]);
+    }).toThrow();
+  });
 });
 
 describe("subtract", () => {
