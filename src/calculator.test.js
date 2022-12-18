@@ -59,3 +59,23 @@ describe("multiply", () => {
     }).toThrow();
   });
 });
+
+describe("divide", () => {
+  test("works with integers", () => {
+    expect(Calculator.divide(18, 6)).toStrictEqual(3);
+  });
+
+  test("works with another set of integers", () => {
+    expect(Calculator.divide(-22, 2)).toStrictEqual(-11);
+  });
+
+  test("works with floats", () => {
+    expect(Calculator.divide(445.6, -31.1)).toBeCloseTo(-14.328);
+  });
+
+  test("doesn't work if inputs are not both numbers", () => {
+    expect(() => {
+      Calculator.divide("d", true);
+    }).toThrow();
+  });
+});
