@@ -36,6 +36,12 @@ describe("encrypt", () => {
   test("works with another set of capital letters", () => {
     expect(CaesarCipher.encrypt("XYZ", 54)).toMatch(/^ZAB$/);
   });
+
+  test("doesn't work if not given a string input and a number offset", () => {
+    expect(() => {
+      CaesarCipher.encrypt(123, []);
+    }).toThrow();
+  });
 });
 
 describe("decrypt", () => {
@@ -73,5 +79,11 @@ describe("decrypt", () => {
 
   test("works with another set of capital letters", () => {
     expect(CaesarCipher.decrypt("XYZ", -54)).toMatch(/^ZAB$/);
+  });
+
+  test("doesn't work if not given a string input and a number offset", () => {
+    expect(() => {
+      CaesarCipher.decrypt(-987, false);
+    }).toThrow();
   });
 });

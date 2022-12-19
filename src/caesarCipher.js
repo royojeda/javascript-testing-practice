@@ -1,5 +1,9 @@
 export default class CaesarCipher {
   static encrypt(string, offset) {
+    if (typeof string !== "string" || typeof offset !== "number") {
+      throw new Error("Invalid input!");
+    }
+
     return string
       .split("")
       .map((letter) => {
