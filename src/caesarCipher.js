@@ -31,4 +31,8 @@ export default class CaesarCipher {
       })
       .join("");
   }
+
+  static decrypt(string, offset) {
+    return this.encrypt(string, -offset);
+  }
 }

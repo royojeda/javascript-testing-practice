@@ -37,3 +37,41 @@ describe("encrypt", () => {
     expect(CaesarCipher.encrypt("XYZ", 54)).toMatch(/^ZAB$/);
   });
 });
+
+describe("decrypt", () => {
+  test("works with one word", () => {
+    expect(CaesarCipher.decrypt("abc", 4)).toMatch(/^wxy$/);
+  });
+
+  test("works with another word", () => {
+    expect(CaesarCipher.decrypt("xyz", -5)).toMatch(/^cde$/);
+  });
+
+  test("works with multiple words", () => {
+    expect(CaesarCipher.decrypt("def ghi", 3)).toMatch(/^abc def$/);
+  });
+
+  test("wraps back to a if result goes beyond z", () => {
+    expect(CaesarCipher.decrypt("zzz", -2)).toMatch(/^bbb$/);
+  });
+
+  test("wraps to z if result goes before a", () => {
+    expect(CaesarCipher.decrypt("aaa", 2)).toMatch(/^yyy$/);
+  });
+
+  test("works with a large positive offset", () => {
+    expect(CaesarCipher.decrypt("word", 456)).toMatch(/^iadp$/);
+  });
+
+  test("works with a large negative offset", () => {
+    expect(CaesarCipher.decrypt("word", -123)).toMatch(/^phkw$/);
+  });
+
+  test("works with capital letters", () => {
+    expect(CaesarCipher.decrypt("ABC", 28)).toMatch(/^YZA$/);
+  });
+
+  test("works with another set of capital letters", () => {
+    expect(CaesarCipher.decrypt("XYZ", -54)).toMatch(/^ZAB$/);
+  });
+});
